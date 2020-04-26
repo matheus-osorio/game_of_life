@@ -1,18 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Menu :range="range" :play="play" @togglePlay="togglePlay"></Menu>
+    <Game :range="range" :play="play"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Game from './components/Game.vue'
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Game,
+    Menu
+  },
+  data(){
+    return {
+         range:{x:50,y:50},
+         play:false
+    }
+ },
+ methods:{
+   togglePlay(){
+     this.play = !this.play
+     console.log(this.play)
+   }
+ }
 }
 </script>
 
@@ -23,6 +37,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
 }
 </style>
